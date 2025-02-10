@@ -16,7 +16,7 @@ function App() {
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/home" element={<Main />} />
+            <Route path="/" element={<Main />} />
             <Route path="/register" element={<Register />} />
           </Routes>
         </main>
