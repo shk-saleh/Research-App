@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { History } from 'lucide-react';
+import { motion } from "motion/react"
 
 
 
@@ -14,7 +15,7 @@ export const RecentSum = () => {
 
   return (
     
-    <div className='px-6'>
+    <motion.div initial={{ y: 100, opacity: 0 }}  whileInView={{ y: 0, opacity:1 }} transition={{duration: 0.5, delay: 0.4}} className='px-6'>
         <div className="flex items-center gap-2 mb-6">
         <History className="h-5 w-5 text-blue-400" />
         <h3 className="text-xl font-semibold text-gray-100">Recent Summaries</h3>
@@ -31,7 +32,7 @@ export const RecentSum = () => {
             </div>
         ))}
         </div>
-    </div>
+    </motion.div>
 
   )
 }

@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Upload, Link } from 'lucide-react';
+import { motion } from "motion/react"
+
 
 
 export const Research = () => {
@@ -71,16 +73,16 @@ export const Research = () => {
 
   return (
     <div className="text-center my-12 relative z-10 px-6" id='research'>
-      <div>
+      <motion.div initial={{ y: 100, opacity: 0 }}  whileInView={{ y: 0, opacity:1 }} transition={{duration: 0.5, delay: 0.4}}>
         <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
           Try it now!
         </h2>
         <p className="text-md text-gray-200 font-light">
           Upload your papers and get instant insights and summaries
         </p>
-      </div>
+      </motion.div>
 
-      <div className="my-12">
+      <motion.div initial={{ y: 100, opacity: 0 }}  whileInView={{ y: 0, opacity:1 }} transition={{duration: 0.5, delay: 0.4}} className="my-12">
         <div
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
@@ -147,7 +149,8 @@ export const Research = () => {
             </button>
           </div>
         </form>
-      </div>
+      </motion.div>
+
     </div>
   );
 };

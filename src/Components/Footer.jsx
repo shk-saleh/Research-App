@@ -1,5 +1,7 @@
 import React from 'react';
 import { Facebook, Instagram, Twitter, Github, Youtube } from 'lucide-react';
+import { motion } from "motion/react"
+
 
 const Footer = () => {
   return (
@@ -8,7 +10,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 lg:gap-30">
           {/* Solutions Section */}
-          <div>
+          <motion.div initial={{ y: 100, opacity: 0 }}  whileInView={{ y: 0, opacity:1 }} transition={{duration: 0.5, delay: 0.5}}>
             <h3 className="text-white font-semibold mb-4">Solutions</h3>
             <ul className="space-y-3">
               <li><a href="#" className="hover:text-white">Marketing</a></li>
@@ -17,10 +19,10 @@ const Footer = () => {
               <li><a href="#" className="hover:text-white">Commerce</a></li>
               <li><a href="#" className="hover:text-white">Insights</a></li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Company Section */}
-          <div>
+          <motion.div initial={{ y: 100, opacity: 0 }}  whileInView={{ y: 0, opacity:1 }} transition={{duration: 0.5, delay: 0.6}}>
             <h3 className="text-white font-semibold mb-4">Company</h3>
             <ul className="space-y-3">
               <li><a href="#" className="hover:text-white">About</a></li>
@@ -28,20 +30,20 @@ const Footer = () => {
               <li><a href="#" className="hover:text-white">Jobs</a></li>
               <li><a href="#" className="hover:text-white">Press</a></li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Legal Section */}
-          <div>
+          <motion.div initial={{ y: 100, opacity: 0 }}  whileInView={{ y: 0, opacity:1 }} transition={{duration: 0.5, delay: 0.7}}>
             <h3 className="text-white font-semibold mb-4">Legal</h3>
             <ul className="space-y-3">
               <li><a href="#" className="hover:text-white">Terms of service</a></li>
               <li><a href="#" className="hover:text-white">Privacy policy</a></li>
               <li><a href="#" className="hover:text-white">License</a></li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Newsletter Section */}
-          <div className="lg:col-span-2">
+          <motion.div initial={{ y: 100, opacity: 0 }}  whileInView={{ y: 0, opacity:1 }} transition={{duration: 0.5, delay: 0.8}} className="lg:col-span-2">
             <h3 className="text-white font-semibold mb-4">Subscribe to our newsletter</h3>
             <p className="mb-4">The latest news, articles, and resources, sent to your inbox weekly.</p>
             <form className="flex gap-2">
@@ -57,11 +59,11 @@ const Footer = () => {
                 Subscribe
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+        <motion.div initial={{ y: 100, opacity: 0 }}  whileInView={{ y: 0, opacity:1 }} transition={{duration: 0.5, delay: 0.9}} className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <p>© 2024 Your Company, Inc. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-white">
@@ -80,7 +82,7 @@ const Footer = () => {
               <Youtube size={20} />
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

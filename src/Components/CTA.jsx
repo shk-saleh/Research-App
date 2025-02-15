@@ -1,10 +1,12 @@
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { motion } from "motion/react"
+
 
 const CTA = () => {
   return (
 
-    <div className="w-full px-4 pb-16 pt-30">
+    <motion.div initial={{ y: 100, opacity: 0 }}  whileInView={{ y: 0, opacity:1 }} transition={{duration: 0.5, delay: 0.8}} className="w-full px-4 pb-16 pt-30">
       <div className="max-w-7xl mx-auto relative">
         {/* Main Banner Container */}
         <div className="relative rounded-2xl overflow-hidden">
@@ -39,7 +41,7 @@ const CTA = () => {
          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
