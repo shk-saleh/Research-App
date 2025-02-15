@@ -10,7 +10,7 @@ function App() {
 
   return (
 
-      <div className='bg-slate-950 sm:overflow-hidden'> 
+      <div className='bg-slate-950 overflow-hidden'> 
         <Navbar/>
           <main className="max-w-7xl mx-auto sm:px-0 lg:px-8 pt-60 lg:pt-68 z-10">
             <Routes>
