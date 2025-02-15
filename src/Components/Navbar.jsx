@@ -5,7 +5,7 @@ import { motion } from "motion/react"
 
 export const Navbar = () => {
   return (
-    <motion.header initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity:1 }} transition={{duration: 0.5, delay: 0.3}} className="top-6 fixed left-0 right-0 lg:mx-34 mx-6 z-50 bg-gray-900/50  backdrop-blur-md border border-gray-700 rounded-xl">
+    <motion.header initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity:1 }} transition={{duration: 0.5, delay: 0.3}} className="top-6 fixed left-0 right-0 lg:mx-34 mx-4 z-50 bg-gray-900/50  backdrop-blur-md border border-gray-700 rounded-xl">
         <div className="max-w-8xl mx-auto px-2 py-2 sm:px-6 lg:px-2 flex justify-between items-center">
         <h1 className="lg:text-2xl text-xl font-bold bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
             <NavLink to="/">ResearchAI</NavLink>

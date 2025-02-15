@@ -128,7 +128,7 @@ export const Research = () => {
 
         {/* URL Input */}
         <form onSubmit={handleUrlSubmit} className="mt-6">
-          <div className="flex gap-4">
+          <div className="flex gap-4 lg:flex-row flex-col">
             <input
               type="url"
               value={urlInput}
@@ -142,7 +142,7 @@ export const Research = () => {
               type="submit"
               className="px-6 py-2 bg-gradient-to-r from-blue-500 to-violet-500 
                        hover:from-blue-600 hover:to-violet-600 text-white rounded-lg 
-                       transition-all flex items-center gap-2"
+                       transition-all flex items-center gap-2 justify-center"
             >
               <Link className="h-4 w-4" />
               Process URL
