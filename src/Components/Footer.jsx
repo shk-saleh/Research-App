@@ -6,7 +6,7 @@ const Footer = () => {
 
     <footer className="bg-slate-900 text-gray-300 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-30">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 lg:gap-30">
           {/* Solutions Section */}
           <div>
             <h3 className="text-white font-semibold mb-4">Solutions</h3>

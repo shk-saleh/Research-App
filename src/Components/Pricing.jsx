@@ -3,10 +3,10 @@ import React from 'react'
 export const Pricing = () => {
   return (
 
-    <div className="mt-16">
+    <div className="mt-30 flex flex-col items-center px-6">
         <h3 className="text-4xl font-bold text-center bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent mb-2">Pricing Plans</h3>
         <span className='text-md font-light text-slate-500 '>Low pricing & Best Service</span>
-        <div className="grid md:grid-cols-3 gap-8 mt-28">
+        <div className="grid md:grid-cols-3 gap-8 mt-28 w-full">
 
             {/* Free Tier */}
             <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700 p-6 rounded-lg cursor-pointer hover:translate-y-[-8px] transition delay-150 duration-300 ease-in-out">

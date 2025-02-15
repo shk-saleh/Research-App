@@ -14,7 +14,7 @@ export const RecentSum = () => {
 
   return (
     
-    <div>
+    <div className='px-6'>
         <div className="flex items-center gap-2 mb-6">
         <History className="h-5 w-5 text-blue-400" />
         <h3 className="text-xl font-semibold text-gray-100">Recent Summaries</h3>

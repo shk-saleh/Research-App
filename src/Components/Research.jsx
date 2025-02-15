@@ -1,9 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { Upload, Link } from 'lucide-react';
-import { RecentSum } from './RecentSum';
-import { Pricing } from './Pricing';
 
-export const Main = () => {
+
+export const Research = () => {
 
   const [isDragging, setIsDragging] = useState(false);
   const [urlInput, setUrlInput] = useState('');
@@ -71,12 +70,12 @@ export const Main = () => {
   };
 
   return (
-    <div className="text-center mb-12">
+    <div className="text-center my-12 relative z-10 px-6" id='research'>
       <div>
         <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-          Transform Your Research Papers with AI
+          Try it now!
         </h2>
-        <p className="text-xl text-gray-400">
+        <p className="text-md text-gray-200 font-light">
           Upload your papers and get instant insights and summaries
         </p>
       </div>
@@ -149,17 +148,6 @@ export const Main = () => {
           </div>
         </form>
       </div>
-
-      {/* Recent summaries */}
-
-      <div className='mb-48'>
-        <RecentSum/>
-      </div>
-
-      <div>
-        <Pricing/>
-      </div>
-
     </div>
   );
 };
