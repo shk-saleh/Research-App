@@ -1,15 +1,35 @@
 import React, { useState, useCallback } from 'react';
-import { Upload, Link } from 'lucide-react';
+import { Upload, Link, FileText, Clock, Clipboard } from 'lucide-react';
 import { motion } from "motion/react"
+import AuthPopUp from './AuthPopUp';
+import { useRef } from 'react';
 
 
 
 export const Research = () => {
 
+
+  const content = useRef(null);
+
   const [isDragging, setIsDragging] = useState(false);
+  const [showResults, setShowResults] = useState(true);
   const [urlInput, setUrlInput] = useState('');
   const [error, setError] = useState('');
   const [uploadProgress, setUploadProgress] = useState(0); // State to track upload progress
+  const [showAuthPopup, setShowAuthPopup] = useState(false);
+
+  const recentSummaries = [
+    { id: 1, title: "Machine Learning Research", date: "2 mins ago" },
+    { id: 2, title: "AI Ethics Paper", date: "1 hour ago" },
+    { id: 3, title: "Neural Networks Study", date: "2 hours ago" }
+  ];
+
+  const copyContent = useCallback(() => {
+
+    // content.current?.select();    // to show selected
+    window.navigator.clipboard.writeText(content.current.value);
+
+  })
 
   const handleDragOver = useCallback((e) => {
     e.preventDefault();
@@ -62,17 +82,28 @@ export const Research = () => {
   };
 
   const handleUrlSubmit = (e) => {
+
     e.preventDefault();
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+      setShowAuthPopup(true);
+      return;
+    }
+
     if (!urlInput.trim()) {
       setError('Please enter a valid URL');
       return;
     }
-    // Handle URL submission here
-    console.log('URL submitted:', urlInput);
+
+    setShowResults(true);
   };
 
+
   return (
+
     <div className="text-center my-12 relative z-10 px-6" id='research'>
+      
       <motion.div initial={{ y: 100, opacity: 0 }}  whileInView={{ y: 0, opacity:1 }} transition={{duration: 0.5, delay: 0.4}}>
         <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
           Try it now!
@@ -138,7 +169,7 @@ export const Research = () => {
                        text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 
                        focus:border-transparent"
             />
-            <button
+            <button onClick={() => setShowAuthPopup(true)}
               type="submit"
               className="px-6 py-2 bg-gradient-to-r from-blue-500 to-violet-500 
                        hover:from-blue-600 hover:to-violet-600 text-white rounded-lg 
@@ -149,7 +180,65 @@ export const Research = () => {
             </button>
           </div>
         </form>
+
+
+        {showResults && (
+          <motion.div 
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="mt-24 flex gap-12 w-full"
+          >
+            {/* Summary Content */}
+            <div className="text-left font-normal w-3/2 bg-gray-900/50 p-10 rounded-xl overflow-y-scroll h-82">
+              <div className='flex justify-between items-center mb-10 border-b border-gray-700'>
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+                  Result
+                </h3>
+                <Clipboard className='text-gray-400 mb-2 cursor-pointer' onClick={copyContent}/>
+              </div>
+              <p className="text-gray-300 mb-4" ref={content}>
+                Our AI has analyzed your research paper and extracted key insights. The paper discusses
+                advanced machine learning techniques and their applications in modern research.
+                Our AI has analyzed your research paper and extracted key insights. The paper discusses
+                advanced machine learning techniques and their applications in modern research.
+              
+              </p>
+            </div>
+
+            {/* Recent Summaries */}
+            <div className='w-2/3'>
+              <h3 className="text-2xl font-medium text-gray-200 mb-4">Recent Summaries</h3>
+              <div className="space-y-4">
+                {recentSummaries.map(summary => (
+                  <div 
+                    key={summary.id}
+                    className="p-4 bg-gray-800/30 border border-gray-700 rounded-lg hover:bg-gray-800/50 transition-all"
+                  >
+                    <div className="flex items-start gap-3">
+                      <FileText className="h-5 w-5 text-blue-400 mt-1" />
+                      <div>
+                        <h4 className="text-gray-200 font-medium">{summary.title}</h4>
+                        <div className="flex items-center gap-2 mt-1 text-sm">
+                          <Clock className="h-4 w-4 text-gray-500" />
+                          <span className="text-gray-400">{summary.date}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+
       </motion.div>
+
+
+      {showAuthPopup && (
+          <AuthPopUp onClose={() => setShowAuthPopup(false)} />
+      )}
+      
 
     </div>
   );

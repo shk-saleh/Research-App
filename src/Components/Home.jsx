@@ -12,7 +12,6 @@ export const Home = () => {
     <div>
         <Hero/>
         <Research/>
-        <RecentSum/>
         <Features/>    
         <Pricing/>
         <CTA/>
