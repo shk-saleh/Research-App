@@ -20,45 +20,31 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
     setError('');
     
     if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
-      return;
+        setError('Passwords do not match');
+        return;
     }
 
     setIsLoading(true);
 
-    try {
-      const response = await fetch('http://localhost:8000/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-          full_name: formData.full_name
-        })
-      });
+    setTimeout(() => {
+        const mockResponse = {
+            access_token: "fake-jwt-token" // Mock token
+        };
 
-      const data = await response.json();
+        localStorage.setItem('token', mockResponse.access_token);
+        window.location.href = '/'; 
 
-      if (!response.ok) {
-        throw new Error(data.detail || 'Registration failed');
-      }
+        setIsLoading(false);
 
-      if (data.access_token) {
-        localStorage.setItem('token', data.access_token);
-        window.location.href = '/dashboard';
-      }
-    } catch (err) {
-      setError(err.message || 'Registration failed. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+    }, 2000); 
+    
   };
+
 
   return (
 
