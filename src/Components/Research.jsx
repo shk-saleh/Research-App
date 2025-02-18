@@ -12,7 +12,7 @@ export const Research = () => {
   const content = useRef(null);
 
   const [isDragging, setIsDragging] = useState(false);
-  const [showResults, setShowResults] = useState(true);
+  const [showResults, setShowResults] = useState(false);  // as it fetch data from api it get true
   const [urlInput, setUrlInput] = useState('');
   const [error, setError] = useState('');
   const [uploadProgress, setUploadProgress] = useState(0); // State to track upload progress
@@ -26,10 +26,10 @@ export const Research = () => {
 
   const copyContent = useCallback(() => {
 
-    // content.current?.select();    // to show selected
-    window.navigator.clipboard.writeText(content.current.value);
+    content.current?.select();    // to show selected
+    document.execCommand('copy');
 
-  })
+  }, [])
 
   const handleDragOver = useCallback((e) => {
     e.preventDefault();
@@ -186,27 +186,26 @@ export const Research = () => {
           <motion.div 
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className="mt-24 flex gap-12 w-full"
+            className="mt-24 flex flex-col lg:flex-row gap-12 w-full"
           >
             {/* Summary Content */}
-            <div className="text-left font-normal w-3/2 bg-gray-900/50 p-10 rounded-xl overflow-y-scroll h-82">
+            <div className="text-left font-normal lg:w-3/2 w-full bg-gray-900/50 p-10 rounded-xl overflow-y-scroll h-82">
               <div className='flex justify-between items-center mb-10 border-b border-gray-700'>
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
                   Result
                 </h3>
                 <Clipboard className='text-gray-400 mb-2 cursor-pointer' onClick={copyContent}/>
               </div>
-              <p className="text-gray-300 mb-4" ref={content}>
-                Our AI has analyzed your research paper and extracted key insights. The paper discusses
-                advanced machine learning techniques and their applications in modern research.
-                Our AI has analyzed your research paper and extracted key insights. The paper discusses
-                advanced machine learning techniques and their applications in modern research.
-              
-              </p>
+              <textarea
+                ref={content}
+                readOnly
+                className="w-full h-64 bg-transparent text-gray-300 resize-none focus:outline-none"
+                value="Our AI has analyzed your research paper and extracted key insights. The paper discusses advanced machine learning techniques and their applications in modern research. Our AI has analyzed your research paper and extracted key insights. The paper discusses advanced machine learning techniques and their applications in modern research."
+              />
             </div>
 
             {/* Recent Summaries */}
-            <div className='w-2/3'>
+            <div className='lg:w-2/3 w-full'>
               <h3 className="text-2xl font-medium text-gray-200 mb-4">Recent Summaries</h3>
               <div className="space-y-4">
                 {recentSummaries.map(summary => (

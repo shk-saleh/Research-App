@@ -20,3 +20,7 @@
 ::selection{
     background: #5e5f7a69;
 }
+
+textarea::-webkit-scrollbar{
+    width: 0;
+}
